@@ -207,7 +207,7 @@ void revalue_array(double r, double ar[], int n)
 */
 
 //--------------7.8------------------
-
+/*
 #include <iostream>
 
 const int ArSize = 8;
@@ -231,4 +231,285 @@ int sum_arr(const int* begin, const int* end)
     for(pt = begin; pt != end; pt++)
         total = total + *pt;
     return total;
+}
+*/
+
+//--------------7.9--------------
+/*
+#include <iostream>
+
+using namespace std;
+
+unsigned int c_in_str(const char * str, char ch);
+
+int main()
+{
+    char mas[15] = "minimum";
+    char* value = "lilolia";
+    unsigned int ms = c_in_str(mas,'m');
+    unsigned int ls = c_in_str(value, 'l');
+    cout << ms << " m characters in " << mas << endl;
+    cout << ls << " l characters in " << value << endl;
+    return 0;
+}
+
+unsigned int c_in_str(const char* str, char ch)
+{
+    unsigned int result = 0;
+    while (*str)
+    {
+        if(*str==ch)
+            result++;
+        str++;
+    }
+    return result;
+}
+*/
+
+//--------------7.10----------------
+/*
+#include <iostream>
+
+char * buildstr(char c, int n);
+
+int main()
+{
+    int n;
+    char c;
+    std::cout <<"Enter a character: ";
+    std::cin >> c;
+    std::cout <<"Enter an integer: ";
+    std::cin >> n;
+    char* ps = buildstr(c,n);
+    std::cout << ps << std::endl;
+    delete [] ps;
+
+    ps = buildstr('+', 20);
+    std::cout << ps << "-DONE-" << ps << std::endl;
+    delete [] ps;
+    return 0;
+}
+
+char* buildstr(char c, int n)
+{
+    char* pstr = new char[n+1];
+    pstr[n] = '\0';
+    while(n-- >0)
+        pstr[n] = c;
+    return pstr;
+}
+*/
+
+//------------------7.11-----------------
+/*
+#include <iostream>
+const int hour_per_minut = 60;
+struct time_tr
+{
+    int hours;
+    int mins;
+};
+
+time_tr sum(time_tr t1, time_tr t2);
+void show(time_tr t);
+
+int main()
+{
+    using namespace std;
+    time_tr day1 = {5,45};
+    time_tr day2 = {4,40};
+    time_tr trip = sum(day1,day2);
+    cout << "Two-day trip: ";
+    show(trip);
+    time_tr day3 = {2,10};
+    cout <<"Three-day trip total: ";
+    show(sum(trip,day3));
+    return 0;
+}
+time_tr sum(time_tr t1, time_tr t2)
+{
+    time_tr result;
+    result.hours = (t1.hours + t2.hours + (t1.mins + t2.mins)/hour_per_minut);
+    result.mins = (t1.mins + t2.mins) % hour_per_minut;
+    return result;
+}
+void show(time_tr t)
+{
+    using std::cout;
+    cout << t.hours << " Hours " << t.mins << " minutes.\n";
+}
+*/
+
+//-----------------7.12-------------
+/*
+#include <iostream>
+#include <cmath>
+
+struct polar
+{
+    double distance;
+    double angle;
+};
+
+struct rect
+{
+    double x;
+    double y;
+};
+
+polar rect_to_polar(rect xypos);
+void show_polar(polar dapos);
+
+int main()
+{
+    using namespace std;
+    rect rplace;
+    polar pplace;
+    cout << "Enter the x and y values: ";
+    while (cin >> rplace.x >> rplace.y)
+    {
+        pplace = rect_to_polar(rplace);
+        show_polar(pplace);
+        cout << "Next two numbers (q to quit): ";
+    }
+    cout << "Done.\n";
+    return 0;
+}
+
+polar rect_to_polar(rect xypos)
+{
+    using namespace std;
+    polar result;
+    result.distance = sqrt(xypos.x * xypos.x + xypos.y * xypos.y);
+    result.angle = atan2(xypos.y, xypos.x);
+    return result;
+}
+void show_polar (polar dapos)
+{
+    using std::cout;
+    const double Rad_to_deg = 57.29577951;
+    cout << "Distance = " << dapos.distance;
+    cout << " , angle = " << dapos.angle * Rad_to_deg;
+    cout << " degrees.\n";
+}
+*/
+
+//-----------------7.13----------------
+/*
+#include <iostream>
+#include <cmath>
+
+struct polar
+{
+    double distance;
+    double angle;
+};
+struct rect
+{
+    double x;
+    double y;
+};
+
+void rect_to_polar(const rect* pxy, polar* pda);
+void show_polar(const polar* pda);
+
+int main()
+{
+    using namespace std;
+    rect rplace;
+    polar pplace;
+    cout << "Enter the x and y values: ";
+    while (cin >> rplace.x >> rplace.y)
+    {
+        rect_to_polar(&rplace, &pplace);
+        show_polar(&pplace);
+        cout << "Next two numbers (q to quit): ";
+    }
+    cout << "Done. \n";
+    return 0;
+}
+
+void rect_to_polar(const rect* pxy, polar* pda)
+{
+    using namespace std;
+    pda->distance = sqrt(pxy->x * pxy->x + pxy->y * pxy->y);
+    pda->angle = atan2(pxy->y, pxy->x);
+}
+void show_polar(const polar * pda)
+{
+    using namespace std;
+    const double rad_to_deg = 57.29577951;
+    cout << "Distance = " << pda->distance;
+    cout << ", Angle = " << pda->angle * rad_to_deg;
+    cout << " degrees.\n";
+}
+*/
+
+//---------------7.14------------------
+/*
+#include <iostream>
+#include <string>
+
+using namespace std;
+const int SIZE = 5;
+void display(const string sa[], int n);
+
+int main()
+{
+    string list[SIZE];
+    cout << "Enter your " << SIZE << " favorite astronomicaly things :\n";
+    for(int i = 0; i < SIZE;i++)
+    {
+        cout << i+1 << ": ";
+        getline(cin,list[i]);
+    }
+    cout << "Your list is:\n";
+    display(list,SIZE);
+    return 0;
+}
+void display(const string sa[], int n)
+{
+    for(int i = 0; i < n; i++)
+        cout << i+1 << ": " << sa[i] << endl;
+}
+*/
+
+//-------------------7.15-----------------
+
+#include <iostream>
+#include <string>
+#include <array>
+
+using namespace std;
+
+const int Season = 4;
+const array<string, Season> Snames = {"Spring", "Summer", "Fall", "Winter"};
+
+void fill(array <double, Season>* pa);
+void show(array <double, Season> da);
+int main()
+{
+    array <double, Season> expenses;
+    fill(&expenses);
+    show(expenses);
+    return 0;
+}
+void fill(array<double, Season>* pa)
+{
+    for(int i = 0; i < Season;i++)
+    {
+        cout << "Enter " << Snames[i] << " expenses: ";
+        cin >> (*pa)[i];
+    }
+}
+void show(array<double, Season> da)
+{
+    double total = 0.0;
+    cout << "\nEXPENSES\n";
+    for(int i = 0; i < Season; i++)
+    {
+        cout << Snames[i] <<": $" << da[i] << endl;
+        total += da[i];
+    }
+    cout << "Total Expenses: $" << total << endl;
 }
