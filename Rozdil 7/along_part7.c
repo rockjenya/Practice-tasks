@@ -475,7 +475,7 @@ void display(const string sa[], int n)
 */
 
 //-------------------7.15-----------------
-
+/*
 #include <iostream>
 #include <string>
 #include <array>
@@ -512,4 +512,98 @@ void show(array<double, Season> da)
         total += da[i];
     }
     cout << "Total Expenses: $" << total << endl;
+}
+*/
+
+//----------7.16-----------
+/*
+#include <iostream>
+void countdown (int n);
+int main()
+{
+    countdown(4);
+    return 0;
+}
+void countdown(int n)
+{
+    std::cout << "Counting down ... " << n << "\t (n at " << &n << ")" << std::endl;
+    if(n>0)
+        countdown(n-1);
+    std::cout << n << ": Kaboom!" << "\t\t\t (n at" << &n << ")\n";
+}
+*/
+
+//------------7.17-------------
+/*
+#include <iostream>
+
+const int Len = 66;
+const int Divs = 6;
+
+void subdivide(char ar[], int low, int high, int level);
+
+int main()
+{
+    using namespace std;
+    char ruler[Len];
+    int i;
+    for (i = 1; i < Len; i++)
+        ruler[i] = ' ';
+    ruler[Len-1] = '\0';
+    int max = Len -2;
+    int min = 0;
+    ruler[min]=ruler[max] = '|';
+    cout << ruler << endl;
+    for(i = 1; i <= Divs; i++)
+    {
+        subdivide(ruler,min,max,i);
+        cout << ruler << endl;
+        for(int j = 1; j < Len-2;j++)
+            ruler[j] =' ';
+    }
+    return 0;
+}
+void subdivide(char ar[], int low, int high, int level)
+{
+    if(level == 0)
+        return;
+    int mid = (high + low) / 2;
+    ar[mid] = '|';
+    subdivide(ar,low,mid,level-1);
+    subdivide(ar,mid,high,level-1);
+}
+*/
+
+//-------------------7.18---------------
+
+#include <iostream>
+
+double betsy(int);
+double pam(int);
+void estimate(int lines, double(*pt)(int));
+
+int main()
+{
+    using namespace std;
+    int code;
+    cout << "How many lines of code do you need? ";
+    cin >> code;
+    cout << "Here's Betsy's estimate:\n";
+    estimate(code,betsy);
+    cout << "Here's Pam's estimate:\n";
+    estimate(code,pam);
+    return 0;
+}
+double betsy(int lns)
+{
+    return 0.05*lns;
+}
+double pam(int lns)
+{
+    return 0.03* lns + 0.0004 * lns * lns;
+}
+void estimate(int lines, double(*pf)(int))
+{
+    std::cout << lines << " lines will take";
+    std::cout << (*pf)(lines) << " hour(s)\n";
 }
