@@ -11,6 +11,7 @@ struct box
     float volume;
 };
 
+void clearing();
 void show(const box a);
 void vol(box *a);
 void inbox(box *a);
@@ -31,15 +32,19 @@ void inbox(box *a)
 {
     cout << "\n\t\t--Enter--\n\n" << endl;
     cout << "Name: ";
-    cin >> a->maker;
+    cin.getline(a->maker,40);
     cout << "Height: ";
-    cin >> a->height;
+    while(!(cin >> a->height))
+        clearing();
     cout << "Width: ";
-    cin >> a->width;
+    while(!(cin >> a->width))
+        clearing();
     cout << "Length: ";
-    cin >> a->length;
+    while(!(cin >> a->length))
+        clearing();
     cout << "Volume: ";
-    cin >> a->volume;
+    while(!(cin >> a->volume))
+        clearing();
     cout << "Well done!" << endl;
 }
 void show(const box a)
@@ -54,4 +59,12 @@ void show(const box a)
 void vol(box *a)
 {
     a->volume = a->height + a->length + a->width;
+}
+void clearing()
+{
+    cin.clear();
+    while(cin.get() != '\n')
+        continue;
+     cout << "Wrong value! Please, try again!" << endl;
+     cout << ": ";
 }
