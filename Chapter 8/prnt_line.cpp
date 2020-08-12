@@ -17,6 +17,7 @@ int main()
     Print_line(line, 2);
     return 0;
 }
+
 void Print_line(char *a, int i)
 {
     
