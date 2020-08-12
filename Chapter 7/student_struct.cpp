@@ -55,10 +55,12 @@ int getinfo(student pa[], int n)
     }
     return i;
 }
+
 void display1(student st)
 {
     cout << "Student " << st.fullname << " have hobby: " << st.hobby << ", and OOP lvl: " << st.ooplevel << endl;
 }
+
 void display2(const student *ps)
 {
     cout << ps->fullname << "'s pointer show that student have hobby: " << ps->hobby << ", and OOP lvl: " << ps->ooplevel << endl;
