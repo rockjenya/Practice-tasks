@@ -2,7 +2,7 @@
 
 using namespace std;
 
-long double probability(unsigned numbers, unsigned picks, unsigned cool);
+long double probability_to_win(unsigned numbers, unsigned picks, unsigned cool);
 
 int main()
 {
@@ -11,13 +11,13 @@ int main()
     while((cin >> total >> choices >> cool) && choices <=total)
     {
         cout << "You have one chance in ";
-        cout << probability(total, choices, cool) << " of winning.\n";
+        cout << probability_to_win(total, choices, cool) << " of winning.\n";
         cout << "Next two numbers and super number (q to quit):";
     }
     cout << "Bye";
     return 0;
 }
-long double probability(unsigned numbers, unsigned picks, unsigned cool)
+long double probability_to_win(unsigned numbers, unsigned picks, unsigned cool)
 {
     long double result = 1.0;
     long double fin_res;
