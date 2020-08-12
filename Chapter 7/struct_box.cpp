@@ -56,10 +56,12 @@ void show(const box a)
     cout << "Length: " << a.length << endl;
     cout << "Volume: " << a.volume << endl;
 }
+//Task B
 void vol(box *a)
 {
     a->volume = a->height + a->length + a->width;
 }
+
 void clearing()
 {
     cin.clear();
