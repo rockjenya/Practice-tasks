@@ -41,7 +41,6 @@ void show(const double *array, const int s)
     cout << "Total Expenses : $" << total << endl;
 }
 */
-
 //-----Task 8.b------
 
 #include <iostream>
