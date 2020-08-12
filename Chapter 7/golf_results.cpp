@@ -1,7 +1,6 @@
 #include <iostream>
 
 using namespace std;
-
 const int MAXIMA = 10;
 
 void show(const int ar[], int n);
