@@ -1,7 +1,7 @@
 #include <iostream>
 
 const int MAX=5;
-
+//Return ptr to next position after array
 double * fill_array(double ar[], int limit);
 void show_array(const double ar[], const double * limit);
 void revalue(double r, double ar[], const double * limit);
