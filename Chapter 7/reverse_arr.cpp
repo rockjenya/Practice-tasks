@@ -18,7 +18,6 @@ int main()
     Reverse_array(array,i);
     return 0;
 }
-
 int Fill_array(double array[], int size)
 {
     using std::endl;
