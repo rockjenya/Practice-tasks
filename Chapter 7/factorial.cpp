@@ -1,7 +1,7 @@
 #include <iostream>
 
 using namespace std;
-
+//Рекурсивна функція
 unsigned long long factorial(int fact);
 
 int main()
