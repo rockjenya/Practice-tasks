@@ -6,8 +6,8 @@ T max5(T arr[]);
 
 int main()
 {
-    int iar[N] = {1,2,3,4,5};
-    double dar[N] = {1.0,2.0,3.0,8.0,5.0};
+    int iar[N] = {384,385,3,1,5};
+    double dar[N] = {1.0,1001.0,1000.0,8.0,5.0};
     int imax = max5(iar);
     double dmax = max5(dar);
     cout << "int max = " << imax << endl;
@@ -18,9 +18,9 @@ int main()
 template<typename T>
 T max5(T arr[])
 {
-    T max;
+    T max = 0;
     for(int i = 0; i<N; i++)
-        if(arr[i] > arr[i-1])
+        if(arr[i] > max)
             max=arr[i];
     return max;
 }
